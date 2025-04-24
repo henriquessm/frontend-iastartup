@@ -12,7 +12,7 @@ function App() {
     <>
       <Header />
 
-      {/* SEÇÃO PRINCIPAL COM FUNDO */}
+      {/* secao com background */}
       <div
         style={{
           backgroundImage: `url(${bg3})`,
@@ -62,7 +62,6 @@ function App() {
         </div>
       </div>
 
-      {/* SEÇÃO DE CONTEÚDO */}
       <div className="w-full px-8 py-24 flex flex-col gap-16 items-center bg-white">
         <div className="max-w-[1200px] w-full flex flex-col md:flex-row justify-between items-start gap-8 -mt-15">
           <div className="text-[#2797ff] text-4xl font-bold leading-snug poppins-regular">
@@ -80,7 +79,7 @@ function App() {
           </div>
         </div>
 
-        {/* CARROSSEL DEPOIMENTOS COM EFEITO CONTÍNUO */}
+        {/* carousel */}
         <div className="w-full overflow-hidden max-w-[1100px]" ref={carouselRef}>
           <p className="text-[#2797ff] text-xl font-bold mb-10 poppins-regular text-center">
             Quem já reformou com a gente:
@@ -152,7 +151,50 @@ function App() {
         </div>
       </div>
 
-      {/* Animação personalizada */}
+      {/*  aquela parte */}
+
+      <div className="w-full px-8 py-24 bg-white flex flex-col items-center">
+      <div className="max-w-[1200px] w-full flex flex-col lg:flex-row items-center gap-12">
+        <div className="flex-1">
+          <p className="text-[#2797ff] font-semibold text-sm uppercase mb-2">Crédito Consignado</p>
+          <h2 className="text-4xl font-bold text-[#121212] mb-6 leading-tight poppins-regular">
+            Crédito facilitado para<br />reformar sua casa
+          </h2>
+          <p className="text-[#444] text-lg poppins-light mb-8">
+            Oferecemos crédito consignado com taxas acessíveis e contratação simplificada,
+            ideal para quem deseja transformar sua casa com tranquilidade e segurança.
+          </p>
+
+          <p className="text-[#121212] text-xl font-semibold mb-4">Benefícios que fazem a diferença</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {[
+              { icon: '🏡', text: 'Financiamento para reforma' },
+              { icon: '💰', text: 'Taxas competitivas' },
+              { icon: '📄', text: 'Processo 100% digital' },
+              { icon: '⏱️', text: 'Aprovação rápida' },
+            ].map((item, i) => (
+              <div key={i} className="flex items-center gap-3 bg-[#f9f9f9] p-4 rounded-xl shadow-sm">
+                <div className="text-2xl text-[#2797ff]">{item.icon}</div>
+                <span className="text-[#121212] font-medium text-base poppins-regular">{item.text}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Imagem 1 de 3 daquela parte */}
+        <div className="flex-1 relative">
+          <div className="rounded-[40px] overflow-hidden shadow-lg relative">
+            <img
+              src={work}
+              alt="homem feliz"
+              className="w-144 h-122 object-cover"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+
       <style>
         {`
           @keyframes scroll {
