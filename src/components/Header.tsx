@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import Logo from '../assets/tung.png';
+import Logo from '../assets/img/siel.png';
 
 function Header() {
   const [showHeader, setShowHeader] = useState(true);
@@ -8,18 +8,11 @@ function Header() {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-
-      if (currentScrollY > lastScrollY) {
-        setShowHeader(false); // descendo, esconde
-      } else {
-        setShowHeader(true); // subindo, mostra
-      }
-
+      setShowHeader(currentScrollY <= lastScrollY);
       setLastScrollY(currentScrollY);
     };
 
     window.addEventListener('scroll', handleScroll);
-
     return () => window.removeEventListener('scroll', handleScroll);
   }, [lastScrollY]);
 
@@ -27,32 +20,31 @@ function Header() {
     <header
       className={`${
         showHeader ? 'translate-y-0' : '-translate-y-full'
-      } fixed top-0 left-0 bg-[#DBF9F0] shadow-md z-1000 flex items-center justify-center h-[70px] w-full rounded-b-lg transition-transform duration-300 mb-[100px]`}
+      } fixed top-0 left-0 right-0 z-50 bg-white transition-transform duration-300 h-[90px] flex items-center px-6`}
     >
-      <img src={Logo} alt="Company Logo" className="w-[min(90%,50px)] mr-5" />
+      {/* Logo */}
+      <div className="flex-shrink-0">
+        <img src={Logo} alt="Company Logo" className="h-30" />
+      </div>
+
+      {/* Spacer central */}
+      <div className="flex-grow" />
+
+      {/* Navegação */}
       <nav>
-        <ul className="flex flex-wrap list-none m-0 p-0">
-          <li className="ml-5">
-            <a
-              href="/about"
-              className="text-[#435e4b] no-underline font-bold text-sm"
-            >
+        <ul className="flex space-x-8 items-center">
+          <li>
+            <a href="/about" className="text-black font-semibold text-lg">
               Inteligência
             </a>
           </li>
-          <li className="ml-5">
-            <a
-              href="/services"
-              className="text-[#435e4b] no-underline font-bold text-sm"
-            >
+          <li>
+            <a href="/services" className="text-black font-semibold text-lg">
               Crédito
             </a>
           </li>
-          <li className="ml-5">
-            <a
-              href="/contact"
-              className="text-[#435e4b] no-underline font-bold text-sm"
-            >
+          <li>
+            <a href="/contact" className="text-black font-semibold text-lg">
               Ativação
             </a>
           </li>
