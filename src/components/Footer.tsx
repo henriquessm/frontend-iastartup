@@ -39,7 +39,6 @@ export default function Footer() {
         <div className="flex gap-4 mt-2 md:mt-0">
           <a href="#">Política de Privacidade</a>
           <a href="#">Cookies</a>
-          <span>Desenvolvido por: <strong>SeuNomeDev</strong></span>
         </div>
       </div>
     </footer>
