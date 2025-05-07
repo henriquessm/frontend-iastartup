@@ -1,10 +1,10 @@
 import { useRef, ReactNode } from 'react';
 import { motion, useInView } from 'framer-motion';
+import { useNavigate } from 'react-router-dom'; 
 import Header from '../components/Header';
 import bg3 from '../assets/img/bg9.png';
 import work from '../assets/img/work.png';
 import Footer from '../components/Footer';
-
 import { Button } from '@/components/ui/button';
 
 interface AnimatedSectionProps {
@@ -32,6 +32,7 @@ const AnimatedSection = ({ children, delay = 0, className = "" }: AnimatedSectio
 
 function App() {
   const carouselRef = useRef<HTMLDivElement | null>(null);
+  const navigate = useNavigate();
 
   return (
     <>
@@ -349,7 +350,7 @@ function App() {
       </AnimatedSection>
       {/*  acabou aqui aquela parte */}
 
-      <AnimatedSection>
+      <AnimatedSection className="w-full px-8 py-24 bg-white flex flex-col items-center">
         <div className="bg-black text-white rounded-3xl p-10 flex flex-col md:flex-row justify-between items-center gap-6 max-w-7xl mx-auto mt-16 mb-30">
           <div>
             <h2 className="text-3xl md:text-4xl font-bold text-[#2797ff]">
@@ -359,17 +360,18 @@ function App() {
           </div>
 
           <motion.button
+            // Redireciona para a rota /simulacao ao clicar
+            onClick={() => navigate('/simulacao')}
             className="relative text-black bg-white hover:bg-[#2797ff] hover:text-white text-lg font-bold px-12 py-6 rounded-xl
-                transition-all duration-300 ease-in-out hover:scale-105 group overflow-hidden"
+                       transition-all duration-300 ease-in-out hover:scale-105 group overflow-hidden"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
             Simule seu crédito
-
             <div
               className="absolute top-1/2 right-4 transform -translate-y-12 opacity-0
-                  group-hover:translate-y-[-50%] group-hover:opacity-100
-                  transition-all duration-300 w-6 h-6 rounded-full bg-[#ffffff]"
+                         group-hover:translate-y-[-50%] group-hover:opacity-100
+                         transition-all duration-300 w-6 h-6 rounded-full bg-[#ffffff]"
             />
           </motion.button>
         </div>
