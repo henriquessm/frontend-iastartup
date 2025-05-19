@@ -13,6 +13,12 @@ interface AnimatedSectionProps {
   className?: string;
 }
 
+const cards = [
+  { img: work, label: "Ativação", href: "#ativacao" },
+  { img: work, label: "Inteligência para Vendas", href: "#inteligencia" },
+  { img: work, label: "Crédito", href: "#credito" },
+];
+
 const AnimatedSection = ({ children, delay = 0, className = "" }: AnimatedSectionProps) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
@@ -81,19 +87,31 @@ function App() {
         </AnimatedSection>
 
         <AnimatedSection delay={0.4}>
-          <div className="flex justify-center items-center gap-15 flex-wrap pt-20">
-            {[1, 2, 3].map((_, i) => (
-              <motion.img
-                key={i}
-                src={work}
-                alt={`work-${i}`}
-                className="w-[400px] h-[450px] object-cover rounded-2xl shadow-lg"
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.4 + (i * 0.2) }}
-              />
+
+
+          <div className="flex gap-4 flex-wrap justify-center">
+            {cards.map((card, i) => (
+              <div key={i} className="relative w-[400px] h-[450px]">
+                <motion.img
+                  src={card.img}
+                  alt={`work-${i}`}
+                  className="w-full h-full object-cover rounded-2xl shadow-lg"
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.4 + i * 0.2 }}
+                />
+                <a
+                  href={card.href}
+                  className="absolute bottom-4 left-1/2 transform -translate-x-1/2 
+                  bg-gray-300 text-black px-7 py-3 rounded-full font-medium
+                  whitespace-nowrap text-m hover:bg-gray-400 transition"
+                >
+                  {card.label}
+                </a>
+              </div>
             ))}
           </div>
+
         </AnimatedSection>
       </div>
 
@@ -191,10 +209,10 @@ function App() {
       {/*  aquela parte */}
 
       <AnimatedSection className="w-full px-8 py-24 bg-white flex flex-col items-center">
-        <div className="max-w-[1200px] w-full flex flex-col lg:flex-row items-center gap-12">
+        <div className="max-w-[1200px] w-full flex flex-col lg:flex-row items-center gap-12" id="inteligencia">
           <div className="flex-1">
             <p className="text-[#2797ff] font-semibold text-sm uppercase mb-2">Crédito Consignado</p>
-            <h2 className="text-4xl font-bold text-[#121212] mb-6 leading-tight poppins-regular">
+            <h2 className="text-4xl font-bold text-[#121212] mb-6 leading-tight poppins-regular" >
               Crédito facilitado para<br />reformar sua casa
             </h2>
             <p className="text-[#444] text-lg poppins-light mb-8">
@@ -244,10 +262,10 @@ function App() {
       </AnimatedSection>
 
       <AnimatedSection className="w-full px-8 py-24 bg-white flex flex-col items-center">
-        <div className="max-w-[1200px] w-full flex flex-col lg:flex-row-reverse items-center gap-12">
+        <div className="max-w-[1200px] w-full flex flex-col lg:flex-row-reverse items-center gap-12" id= "credito">
           <div className="flex-1">
             <p className="text-[#2797ff] font-semibold text-sm uppercase mb-2">Financiamento Descomplicado</p>
-            <h2 className="text-4xl font-bold text-[#121212] mb-6 leading-tight poppins-regular">
+            <h2 className="text-4xl font-bold text-[#121212] mb-6 leading-tight poppins-regular" >
               Sua reforma começa com<br />um clique
             </h2>
             <p className="text-[#444] text-lg poppins-light mb-8">
@@ -297,10 +315,10 @@ function App() {
       </AnimatedSection>
 
       <AnimatedSection className="w-full px-8 py-24 bg-white flex flex-col items-center">
-        <div className="max-w-[1200px] w-full flex flex-col lg:flex-row items-center gap-12">
-          <div className="flex-1">
+        <div className="max-w-[1200px] w-full flex flex-col lg:flex-row items-center gap-12" id = "ativacao">
+          <div className="flex-1" id ="credito">
             <p className="text-[#2797ff] font-semibold text-sm uppercase mb-2">Facilidade e Transparência</p>
-            <h2 className="text-4xl font-bold text-[#121212] mb-6 leading-tight poppins-regular">
+            <h2 className="text-4xl font-bold text-[#121212] mb-6 leading-tight poppins-regular" >
               Reforma planejada,<br />orçamento sob controle
             </h2>
             <p className="text-[#444] text-lg poppins-light mb-8">
@@ -363,7 +381,7 @@ function App() {
             // Redireciona para a rota /simulacao ao clicar
             onClick={() => navigate('/simulacao')}
             className="relative text-black bg-white hover:bg-[#2797ff] hover:text-white text-lg font-bold px-12 py-6 rounded-xl
-                       transition-all duration-300 ease-in-out hover:scale-105 group overflow-hidden"
+                       transition-all duration-300 ease-in-out hover:scale-105 group overflow-hidden" 
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >

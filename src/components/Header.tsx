@@ -33,21 +33,45 @@ function Header() {
       {/* Navegação */}
       <nav>
         <ul className="flex space-x-8 items-center">
-          <li>
-            <a href="/about" className="text-black font-semibold text-lg">
-              Inteligência
-            </a>
-          </li>
-          <li>
-            <a href="/services" className="text-black font-semibold text-lg">
-              Crédito
-            </a>
-          </li>
-          <li>
-            <a href="/contact" className="text-black font-semibold text-lg">
-              Ativação
-            </a>
-          </li>
+            <>
+              <style>{`
+                html {
+                  scroll-behavior: smooth;
+                }
+              `}</style>
+
+              <li>
+                <a href="#inteligencia" className="text-black font-semibold text-lg">
+                  Inteligência
+                </a>
+              </li>
+            </>
+            <>
+              <style>{`
+                html {
+                  scroll-behavior: smooth;
+                }
+              `}</style>
+
+              <li>
+                <a href="#credito" className="text-black font-semibold text-lg">
+                  Crédito
+                </a>
+              </li>
+            </>
+            <>
+              <style>{`
+                html {
+                  scroll-behavior: smooth;
+                }
+              `}</style>
+
+              <li>
+                <a href="#ativacao" className="text-black font-semibold text-lg">
+                  Ativação
+                </a>
+              </li>
+            </>
         </ul>
       </nav>
     </header>
