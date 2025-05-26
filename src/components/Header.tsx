@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import Logo from '../assets/img/siel.png';
+import Perfil from '../assets/img/perfil.png';
 
 function Header() {
   const [showHeader, setShowHeader] = useState(true);
@@ -49,7 +50,7 @@ function Header() {
               `}</style>
 
               <li>
-                <a href="#inteligencia" className="text-black font-semibold text-lg">
+                <a href="/#inteligencia" className="text-black font-semibold text-lg">
                   Inteligência
                 </a>
               </li>
@@ -62,7 +63,7 @@ function Header() {
               `}</style>
 
               <li>
-                <a href="#credito" className="text-black font-semibold text-lg">
+                <a href="/#credito" className="text-black font-semibold text-lg">
                   Crédito
                 </a>
               </li>
@@ -75,8 +76,13 @@ function Header() {
               `}</style>
 
               <li>
-                <a href="#ativacao" className="text-black font-semibold text-lg">
+                <a href="/#ativacao" className="text-black font-semibold text-lg">
                   Ativação
+                </a>
+              </li>
+              <li>
+                <a href="/perfil" className="text-black font-semibold text-lg">
+                  <img src={Perfil} alt="Perfil" className="h-8 w-10" />
                 </a>
               </li>
             </>
