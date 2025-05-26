@@ -16,6 +16,11 @@ function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [lastScrollY]);
 
+  // Function to navigate to home page
+  const goToHome = () => {
+    window.location.href = '/';
+  };
+
   return (
     <header
       className={`${
@@ -23,7 +28,10 @@ function Header() {
       } fixed top-0 left-0 right-0 z-50 bg-white transition-transform duration-300 h-[90px] flex items-center px-6`}
     >
       {/* Logo */}
-      <div className="flex-shrink-0">
+      <div 
+        className="flex-shrink-0 cursor-pointer" 
+        onClick={goToHome}
+      >
         <img src={Logo} alt="Company Logo" className="h-30" />
       </div>
 
