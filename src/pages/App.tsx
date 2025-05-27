@@ -4,6 +4,13 @@ import { useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
 import bg3 from '../assets/img/bg9.png';
 import work from '../assets/img/work.png';
+import work2 from '../assets/img/work2.png';
+import guywork from '../assets/img/guywork.jpg';
+import fam1 from '../assets/img/fam1.jpg';
+import fam2 from '../assets/img/fam2.jpg';
+import fam3 from '../assets/img/fam3.png';
+import fam4 from '../assets/img/fam4.png';
+import fam5 from '../assets/img/fam5.png';
 import Footer from '../components/Footer';
 import { Button } from '@/components/ui/button';
 
@@ -14,9 +21,9 @@ interface AnimatedSectionProps {
 }
 
 const cards = [
-  { img: work, label: "Ativação", href: "#ativacao" },
+  { img: guywork, label: "Ativação", href: "#ativacao" },
   { img: work, label: "Inteligência para Vendas", href: "#inteligencia" },
-  { img: work, label: "Crédito", href: "#credito" },
+  { img: work2, label: "Crédito", href: "#credito" },
 ];
 
 const AnimatedSection = ({ children, delay = 0, className = "" }: AnimatedSectionProps) => {
@@ -38,7 +45,12 @@ const AnimatedSection = ({ children, delay = 0, className = "" }: AnimatedSectio
 
 function App() {
   const carouselRef = useRef<HTMLDivElement | null>(null);
+  const simulateCreditButtonRef = useRef<HTMLButtonElement | null>(null);
   const navigate = useNavigate();
+
+  const scrollToSimulateCreditButton = () => {
+    simulateCreditButtonRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
 
   return (
     <>
@@ -71,6 +83,7 @@ function App() {
 
             <div className="flex justify-center mt-10 mb-16">
               <Button
+                onClick={scrollToSimulateCreditButton}
                 className="relative text-black bg-white hover:bg-[#2797ff] hover:text-white text-lg font-bold px-12 py-8 rounded-xl
                         transition-all duration-300 ease-in-out hover:scale-105 group overflow-hidden"
               >
@@ -148,56 +161,42 @@ function App() {
             >
               {[
                 {
-                  name: 'Joana M.',
+                 name: 'Joana M.',
                   quote: 'Troquei todo o piso da cozinha com o crédito em menos de 48h!',
+                  image: fam1 || work // Fallback to work if person1 is not available
                 },
                 {
                   name: 'Carlos T.',
                   quote: 'A parcela cabe certinho no meu salário. Valeu muito a pena!',
+                  image: fam2 || work
                 },
                 {
                   name: 'Luciane R.',
                   quote: 'Nunca achei que fosse tão fácil reformar com crédito consignado.',
+                  image: fam3 || work
                 },
                 {
                   name: 'Marcos V.',
                   quote: 'Agora minha casa tá do jeitinho que eu sempre quis.',
+                  image: fam4 || work
                 },
                 {
                   name: 'Fernanda D.',
                   quote: 'Consegui reformar o banheiro sem apertar o orçamento.',
+                  image: fam5 || work
                 },
-                {
-                  name: 'Joana M.',
-                  quote: 'Troquei todo o piso da cozinha com o crédito em menos de 48h!',
-                },
-                {
-                  name: 'Carlos T.',
-                  quote: 'A parcela cabe certinho no meu salário. Valeu muito a pena!',
-                },
-                {
-                  name: 'Luciane R.',
-                  quote: 'Nunca achei que fosse tão fácil reformar com crédito consignado.',
-                },
-                {
-                  name: 'Marcos V.',
-                  quote: 'Agora minha casa tá do jeitinho que eu sempre quis.',
-                },
-                {
-                  name: 'Fernanda D.',
-                  quote: 'Consegui reformar o banheiro sem apertar o orçamento.',
-                },
+                
               ].map((d, idx) => (
                 <div
                   key={idx}
                   className="bg-[#1a1a1a] text-white rounded-xl p-5 shadow-lg min-w-[280px] max-w-[360px] flex-shrink-0"
                 >
                   <img
-                    src={work || "/placeholder.svg"}
-                    alt="cliente"
+                    src={d.image || "/placeholder.svg"}
+                    alt={`${d.name} - cliente`}
                     className="w-full h-[180px] object-cover rounded-lg mb-4"
                   />
-                  <p className="text-sm italic mb-2 break-words">“{d.quote}”</p>
+                  <p className="text-sm italic mb-2 break-words">"{d.quote}"</p>
                   <p className="text-xs text-[#888] text-right">— {d.name}</p>
                 </div>
               ))}
@@ -205,7 +204,6 @@ function App() {
           </div>
         </AnimatedSection>
       </div>
-
       {/*  aquela parte */}
 
       <AnimatedSection className="w-full px-8 py-24 bg-white flex flex-col items-center">
@@ -305,7 +303,7 @@ function App() {
           >
             <div className="rounded-[40px] overflow-hidden shadow-lg relative">
               <img
-                src={work || "/placeholder.svg"}
+                src={work2 || "/placeholder.svg"}
                 alt="família reformando"
                 className="w-144 h-122 object-cover"
               />
@@ -358,7 +356,7 @@ function App() {
           >
             <div className="rounded-[40px] overflow-hidden shadow-lg relative">
               <img
-                src={work || "/placeholder.svg"}
+                src={guywork || "/placeholder.svg"}
                 alt="obra em casa"
                 className="w-144 h-122 object-cover"
               />
@@ -378,7 +376,7 @@ function App() {
           </div>
 
           <motion.button
-            // Redireciona para a rota /simulacao ao clicar
+            ref={simulateCreditButtonRef}
             onClick={() => navigate('/simulacao')}
             className="relative text-black bg-white hover:bg-[#2797ff] hover:text-white text-lg font-bold px-12 py-6 rounded-xl
                        transition-all duration-300 ease-in-out hover:scale-105 group overflow-hidden" 
