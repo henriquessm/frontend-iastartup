@@ -163,27 +163,22 @@ function App() {
                 {
                  name: 'Joana M.',
                   quote: 'Troquei todo o piso da cozinha com o crédito em menos de 48h!',
-                  image: fam1 || work // Fallback to work if person1 is not available
+                  image: guywork  // Fallback to work if person1 is not available
                 },
                 {
                   name: 'Carlos T.',
                   quote: 'A parcela cabe certinho no meu salário. Valeu muito a pena!',
-                  image: fam2 || work
+                  image: work2 
                 },
                 {
                   name: 'Luciane R.',
                   quote: 'Nunca achei que fosse tão fácil reformar com crédito consignado.',
-                  image: fam3 || work
-                },
-                {
-                  name: 'Marcos V.',
-                  quote: 'Agora minha casa tá do jeitinho que eu sempre quis.',
-                  image: fam4 || work
+                  image: work 
                 },
                 {
                   name: 'Fernanda D.',
                   quote: 'Consegui reformar o banheiro sem apertar o orçamento.',
-                  image: fam5 || work
+                  image: fam5 
                 },
                 
               ].map((d, idx) => (
